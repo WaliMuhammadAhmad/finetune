@@ -4,7 +4,6 @@ import logging
 import math
 from tabulate import tabulate
 import wandb
-import torch
 from transformers import HfArgumentParser, set_seed, AutoModelForCausalLM, AutoConfig
 from trl import ModelConfig, SFTTrainer, get_quantization_config, get_peft_config, get_kbit_device_map
 from src.configs import DataConfig, SFTConfig
@@ -132,9 +131,6 @@ def main():
     else:
         model = AutoModelForCausalLM.from_pretrained(model_config.model_name_or_path, **model_kwargs) # download weights on main_procss, use cache for other
             
-    # model = torch.compile(model) # not needed for now
-    logger.info(f"***Model Loaded***")
-    
     # model = torch.compile(model) # not needed for now
     logger.info(f"***Model Loaded***")
     
