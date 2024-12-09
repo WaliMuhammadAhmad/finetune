@@ -132,8 +132,9 @@ def main():
     else:
         model = AutoModelForCausalLM.from_pretrained(model_config.model_name_or_path, **model_kwargs) # download weights on main_procss, use cache for other
             
-    model = torch.compile(model)
-
+    # model = torch.compile(model) # not needed for now
+    logger.info(f"***Model Loaded***")
+    
     ########################
     # Initialize the Trainer
     ########################
@@ -215,9 +216,9 @@ def main():
         trainer.model.config.save_pretrained(sft_config.output_dir)
 
     kwargs = {
-        "finetuned_from": model_config.model_name_or_path,
-        "dataset": list(data_config.dataset_mixer.keys()),
-        "dataset_tags": list(data_config.dataset_mixer.keys()),
+        "model_name": model_config.model_name_or_path,
+        "dataset_name": list(data_config.dataset_mixer.keys()),
+        "tags": list(data_config.dataset_mixer.keys()),
     }
 
     if sft_config.push_to_hub is True:
