@@ -135,6 +135,9 @@ def main():
     # model = torch.compile(model) # not needed for now
     logger.info(f"***Model Loaded***")
     
+    # model = torch.compile(model) # not needed for now
+    logger.info(f"***Model Loaded***")
+    
     ########################
     # Initialize the Trainer
     ########################
