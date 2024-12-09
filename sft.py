@@ -132,8 +132,9 @@ def main():
     else:
         model = AutoModelForCausalLM.from_pretrained(model_config.model_name_or_path, **model_kwargs) # download weights on main_procss, use cache for other
             
-    model = torch.compile(model)
-
+    # model = torch.compile(model) # not needed for now
+    logger.info(f"***Model Loaded***")
+    
     ########################
     # Initialize the Trainer
     ########################
