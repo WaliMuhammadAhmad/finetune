@@ -216,9 +216,8 @@ def main():
         trainer.model.config.save_pretrained(sft_config.output_dir)
 
     kwargs = {
-        "finetuned_from": model_config.model_name_or_path,
-        "dataset": list(data_config.dataset_mixer.keys()),
-        "dataset_tags": list(data_config.dataset_mixer.keys()),
+        "repo_id " : sft_config.repo_id,
+        "private" : sft_config.private,
     }
 
     if sft_config.push_to_hub is True:
